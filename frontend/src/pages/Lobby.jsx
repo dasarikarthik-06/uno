@@ -42,15 +42,15 @@ export default function Lobby() {
   };
 
   return (
-    <Box className="rounded-3xl border border-white/10 bg-slate-900/90 p-8 shadow-xl">
+    <Box className="rounded-3xl page-panel p-8 shadow-xl">
       <Box className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-        <Typography variant="h4">Lobby</Typography>
-        <Typography className="text-slate-400">Room code: {roomId}</Typography>
+        <Typography variant="h4" className="page-title">Lobby</Typography>
+        <Typography className="page-subtitle">Room code: {roomId}</Typography>
       </Box>
       {error && <Alert severity="error" className="my-4">{error}</Alert>}
-      <List className="mt-4 rounded-3xl bg-slate-950/80 p-3">
+      <List className="mt-4 rounded-3xl panel-surface p-3">
         {players.map((player) => (
-          <ListItem key={player.userId} className="rounded-2xl border border-white/10">
+          <ListItem key={player.userId} className="rounded-2xl panel-surface card-action">
             <ListItemText primary={player.username} secondary={player.userId === hostId ? 'Host' : 'Player'} />
           </ListItem>
         ))}
@@ -63,7 +63,7 @@ export default function Lobby() {
           Leave Room
         </Button>
       </Box>
-      <Typography className="mt-4 text-slate-400">Host can begin when 2+ players are present.</Typography>
+      <Typography className="mt-4 page-subtitle">Host can begin when 2+ players are present.</Typography>
     </Box>
   );
 }

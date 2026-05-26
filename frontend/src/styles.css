@@ -4,5 +4,143 @@
 
 body {
   font-family: Inter, ui-sans-serif, system-ui, sans-serif;
-  background: radial-gradient(circle at top, rgba(56,189,248,0.15), transparent 40%), #020617;
+  min-height: 100vh;
+  background: radial-gradient(circle at top, #c7f2ff 0%, #eff8ff 28%, #ffffff 88%);
+  color: #0f172a;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+.page-panel {
+  background: #ffffff;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  color: #0f172a;
+  box-shadow: 0 25px 60px rgba(15, 23, 42, 0.08);
+}
+
+.panel-surface {
+  background: #f8fafc;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+}
+
+.page-title {
+  color: #0f172a;
+  font-weight: 700;
+}
+
+.page-subtitle,
+.action-note {
+  color: #475569;
+}
+
+.card-action {
+  border: 1px solid rgba(15, 23, 42, 0.08);
+}
+
+.game-page {
+  background: radial-gradient(circle at top, #dff8ff 0%, #f8fbff 30%, #ffffff 100%);
+  padding-bottom: 2rem;
+}
+
+.game-arena {
+  position: relative;
+  min-height: 360px;
+  background: radial-gradient(circle at center, #dbffe0 0%, #a6f1a8 35%, #7cd36f 100%);
+  border-radius: 9999px;
+  overflow: hidden;
+  box-shadow: inset 0 25px 70px rgba(15, 23, 42, 0.08), 0 20px 35px rgba(15, 23, 42, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.game-planet {
+  position: relative;
+  width: 100%;
+  max-width: 420px;
+  min-height: 420px;
+  border-radius: 50%;
+  background: radial-gradient(circle at top, #a0e081 0%, #6bc248 60%, #4da53f 100%);
+}
+
+.game-table {
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  background: radial-gradient(circle at center, #f4ffed 0%, #d6f5c8 30%, #91d77b 100%);
+  box-shadow: 0 25px 40px rgba(15, 23, 42, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.game-card-stack {
+  width: 100px;
+  height: 140px;
+  position: absolute;
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  background: #ffffff;
+  box-shadow: 0 22px 35px rgba(15, 23, 42, 0.15);
+}
+
+.game-card-stack.deck {
+  left: -40px;
+  top: 40px;
+  transform: rotate(-12deg);
+}
+
+.game-card-stack.discard {
+  right: -40px;
+  top: 40px;
+  transform: rotate(12deg);
+}
+
+.game-card-stack .stack-label {
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.75rem;
+  color: #475569;
+  font-weight: 700;
+}
+
+.player-pod {
+  background: #ffffff;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  box-shadow: 0 18px 28px rgba(15, 23, 42, 0.08);
+  border-radius: 28px;
+  padding: 1rem;
+}
+
+.player-name {
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.game-footer {
+  background: #ffffff;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  border-radius: 36px;
+  padding: 1rem;
+}
+
+.hand-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: center;
+}
+
+.card-highlight {
+  box-shadow: 0 18px 35px rgba(15, 23, 42, 0.12);
+}
+
+.game-label {
+  color: #475569;
+  font-size: 0.95rem;
 }

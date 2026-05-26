@@ -43,12 +43,12 @@ export default function Home() {
   };
 
   return (
-    <Box className="rounded-3xl border border-white/10 bg-slate-900/90 p-8 shadow-xl">
+    <Box className="rounded-3xl page-panel p-8 shadow-xl">
       <Box className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-        <Typography variant="h4">Welcome, {user?.username}</Typography>
+        <Typography variant="h4" className="page-title">Welcome, {user?.username}</Typography>
         <Button onClick={logout} color="secondary" variant="outlined">Logout</Button>
       </Box>
-      <Typography className="mt-2 text-slate-400">Create or join a room to start online UNO.</Typography>
+      <Typography className="mt-2 page-subtitle">Create or join a room to start online UNO.</Typography>
       {error && <Alert severity="error" className="my-4">{error}</Alert>}
       <Box className="mt-6 space-y-4">
         <Button variant="contained" fullWidth onClick={createRoom}>Create Room</Button>
@@ -58,7 +58,7 @@ export default function Home() {
         </Box>
       </Box>
       {roomId && (
-        <Typography className="mt-4 text-slate-300">Created room <strong>{roomId}</strong></Typography>
+        <Typography className="mt-4 action-note">Created room <strong>{roomId}</strong></Typography>
       )}
     </Box>
   );

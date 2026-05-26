@@ -5,17 +5,17 @@ const colorMap = {
   YELLOW: 'bg-yellow-400 text-black',
 };
 
-export default function Card({ card, onClick, clickable }) {
+export default function Card({ card, onClick, clickable, className = '' }) {
   if (!card) return null;
   return (
     <button
       type="button"
       onClick={onClick}
       disabled={!clickable}
-      className={`min-w-[68px] min-h-[100px] rounded-2xl px-3 py-4 shadow-lg ${colorMap[card.color]} ${clickable ? 'cursor-pointer hover:scale-105' : 'opacity-80'} transition-transform`}
+      className={`min-w-[72px] min-h-[108px] rounded-[24px] border-2 border-white/90 px-3 py-4 shadow-xl ${colorMap[card.color]} ${className} ${clickable ? 'cursor-pointer hover:-translate-y-1 hover:shadow-2xl' : 'opacity-95'} transition-all duration-200`}
     >
-      <div className="text-xs uppercase tracking-[.2em]">{card.color}</div>
-      <div className="mt-2 text-3xl font-bold">{card.value}</div>
+      <div className="text-[10px] uppercase tracking-[.4em] opacity-90">{card.color}</div>
+      <div className="mt-3 text-4xl font-black">{card.value}</div>
     </button>
   );
 }

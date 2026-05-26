@@ -21,15 +21,15 @@ export default function Login() {
   };
 
   return (
-    <Box className="rounded-3xl border border-white/10 bg-slate-900/90 p-8 shadow-xl">
-      <Typography variant="h4" className="mb-4 text-center">UNO Login</Typography>
+    <Box className="rounded-3xl page-panel p-8 shadow-xl">
+      <Typography variant="h4" className="mb-4 text-center page-title">UNO Login</Typography>
       {error && <Alert severity="error" className="mb-4">{error}</Alert>}
       <Box component="form" onSubmit={handleSubmit} className="space-y-4">
         <TextField fullWidth label="Username" value={username} onChange={(e) => setUsername(e.target.value)} />
         <TextField fullWidth label="Password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
         <Button type="submit" variant="contained" fullWidth>Login</Button>
       </Box>
-      <Typography className="mt-4 text-center text-sm text-slate-400">
+      <Typography className="mt-4 text-center text-sm page-subtitle">
         New player? <Link to="/signup" className="text-cyan-300">Create account</Link>
       </Typography>
     </Box>

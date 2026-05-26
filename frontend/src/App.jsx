@@ -7,6 +7,7 @@ import Signup from './pages/Signup.jsx';
 import Home from './pages/Home.jsx';
 import Lobby from './pages/Lobby.jsx';
 import Game from './pages/Game.jsx';
+import Result from './pages/Result.jsx';
 
 function PrivateRoute({ children }) {
   const { token } = useContext(AuthContext);
@@ -17,7 +18,7 @@ export default function App() {
   return (
     <>
       <CssBaseline />
-      <Container maxWidth="md" className="min-h-screen py-6">
+      <Container maxWidth="md" className="min-h-screen py-10 text-slate-900">
         <Routes>
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
@@ -42,6 +43,14 @@ export default function App() {
             element={
               <PrivateRoute>
                 <Game />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/result/:roomId"
+            element={
+              <PrivateRoute>
+                <Result />
               </PrivateRoute>
             }
           />
