@@ -1,0 +1,53 @@
+import { useContext } from 'react';
+import { Routes, Route, Navigate } from 'react-router-dom';
+import { CssBaseline, Container } from '@mui/material';
+import { AuthContext } from './context/AuthContext.jsx';
+import Login from './pages/Login.jsx';
+import Signup from './pages/Signup.jsx';
+import Home from './pages/Home.jsx';
+import Lobby from './pages/Lobby.jsx';
+import Game from './pages/Game.jsx';
+
+function PrivateRoute({ children }) {
+  const { token } = useContext(AuthContext);
+  return token ? children : <Navigate to="/login" replace />;
+}
+
+export default function App() {
+  return (
+    <>
+      <CssBaseline />
+      <Container maxWidth="md" className="min-h-screen py-6">
+        <Routes>
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route
+            path="/home"
+            element={
+              <PrivateRoute>
+                <Home />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/lobby/:roomId"
+            element={
+              <PrivateRoute>
+                <Lobby />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/game/:roomId"
+            element={
+              <PrivateRoute>
+                <Game />
+              </PrivateRoute>
+            }
+          />
+          <Route path="*" element={<Navigate to="/home" replace />} />
+        </Routes>
+      </Container>
+    </>
+  );
+}
