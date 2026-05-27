@@ -12,7 +12,13 @@ function shuffle(array) {
 function createDeck() {
   const deck = [];
   COLORS.forEach((color) => {
-    VALUES.forEach((value) => deck.push({ color, value }));
+    // 0 card: 1 copy
+    deck.push({ color, value: 0 });
+    // 1-9 cards: 2 copies each
+    for (let value = 1; value <= 9; value++) {
+      deck.push({ color, value });
+      deck.push({ color, value });
+    }
   });
   return shuffle(deck);
 }
@@ -75,11 +81,12 @@ function drawCardInRoom(room, userId) {
   }
   const player = room.players.find((p) => p.userId === userId);
   if (!player) return { error: 'Player not found' };
+  
+  // If deck is empty, generate a fresh deck (unlimited deck)
   if (room.deck.length === 0) {
-    const top = room.discard.pop();
-    room.deck = shuffle(room.discard);
-    room.discard = [top];
+    room.deck = createDeck();
   }
+  
   const card = room.deck.shift();
   if (!card) return { error: 'No cards left' };
   player.hand.push(card);
