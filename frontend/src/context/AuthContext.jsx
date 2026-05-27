@@ -1,7 +1,7 @@
 import { createContext, useEffect, useState } from 'react';
 
 export const AuthContext = createContext(null);
-const API_URL = 'http://localhost:4000';
+const API_URL = 'http://localhost:8000';
 
 export function AuthProvider({ children }) {
   const [token, setToken] = useState(localStorage.getItem('uno_token') || '');

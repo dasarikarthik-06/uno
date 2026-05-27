@@ -18,7 +18,7 @@ export default function App() {
   return (
     <>
       <CssBaseline />
-      <Container maxWidth="md" className="min-h-screen py-10 text-slate-900">
+      <Container maxWidth={false} disableGutters className="min-h-screen text-slate-900" sx={{ width: '100vw', overflowX: 'hidden', minHeight: '100vh' }}>
         <Routes>
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />

@@ -1,9 +1,9 @@
-import { useContext, useEffect } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
-import { useState } from 'react';
-import { AuthContext } from '../context/AuthContext.jsx';
-import { SocketContext } from '../context/SocketContext.jsx';
-import GameTable from '../components/GameTable.jsx';
+import { useContext, useEffect } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import { useState } from "react";
+import { AuthContext } from "../context/AuthContext.jsx";
+import { SocketContext } from "../context/SocketContext.jsx";
+import GameTable from "../components/GameTable.jsx";
 
 export default function Game() {
   const { roomId } = useParams();
@@ -14,28 +14,32 @@ export default function Game() {
 
   useEffect(() => {
     if (!socket) return;
-    socket.emit('join-room', { roomId, userId: user.userId, username: user.username });
-    socket.on('game-state', setGameState);
-    socket.on('game-started', setGameState);
+    socket.emit("join-room", {
+      roomId,
+      userId: user.userId,
+      username: user.username,
+    });
+    socket.on("game-state", setGameState);
+    socket.on("game-started", setGameState);
     return () => {
-      socket.off('game-state');
-      socket.off('game-started');
+      socket.off("game-state");
+      socket.off("game-started");
     };
   }, [socket, roomId, user]);
 
   const handlePlay = (index) => {
     if (!socket) return;
-    socket.emit('play-card', { roomId, userId: user.userId, cardIndex: index });
+    socket.emit("play-card", { roomId, userId: user.userId, cardIndex: index });
   };
 
   const handleDraw = () => {
     if (!socket) return;
-    socket.emit('draw-card', { roomId, userId: user.userId });
+    socket.emit("draw-card", { roomId, userId: user.userId });
   };
 
   const handleExit = () => {
-    if (socket) socket.emit('leave-room', { roomId, userId: user.userId });
-    navigate('/home');
+    if (socket) socket.emit("leave-room", { roomId, userId: user.userId });
+    navigate("/home");
   };
 
   useEffect(() => {
@@ -45,8 +49,8 @@ export default function Game() {
   }, [gameState, navigate, roomId]);
 
   return (
-    <div className="w-screen h-screen overflow-hidden relative">
-      <GameTable 
+    <div className="w-full min-h-screen overflow-hidden relative">
+      <GameTable
         gameState={gameState}
         currentUserId={user.userId}
         onPlayCard={handlePlay}
