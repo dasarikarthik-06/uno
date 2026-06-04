@@ -10,7 +10,7 @@ export function SocketProvider({ children }) {
 
   useEffect(() => {
     if (!token || !user) return;
-    const client = io('http://localhost:4000', {
+    const client = io('http://localhost:8000', {
       auth: { token },
       transports: ['websocket'],
     });
